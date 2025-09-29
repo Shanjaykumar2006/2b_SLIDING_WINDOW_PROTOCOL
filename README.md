@@ -10,60 +10,39 @@
 ## PROGRAM
  
 CLIENT: 
- 
-import socket 
-
+```
+import socket
 s=socket.socket()
-
-s.bind(('localhost',8000)) 
-
+s.bind(('localhost',8000))
 s.listen(5)
-
 c,addr=s.accept()
-
 size=int(input("Enter number of frames to send : "))
-
-l=list(range(size)) 
-
-s=int(input("Enter Window Size : ")) 
-
-st=0 
-
-i=0 
-
-while True: 
-
+l=list(range(size))
+s=int(input("Enter Window Size : "))
+st=0
+i=0
+while True:
     while(i<len(l)):
-    
-            st+=s 
-            
-            c.send(str(l[i:st]).encode()) 
-            
-            ack=c.recv(1024).decode() 
-            
-            if ack: 
-            
-                print(ack) 
-                
-                i+=s 
-                
- 
+        st+=s
+        c.send(str(l[i:st]).encode())
+        ack=c.recv(1024).decode()
+        if ack:
+            print(ack)
+            i+=s
+```
 SERVER: 
- 
-import socket 
-
+``` 
+import socket
 s=socket.socket()
-
-s.connect(('localhost',8000)) 
-
-while True:   
-
-    print(s.recv(1024).decode()) 
-    
-    s.send("acknowledgement recived from the server".encode())   
-    
+s.connect(('localhost',8000))
+while True:
+    print(s.recv(1024).decode())
+    s.send("acknowledgement recived from the server".encode())
+  ```  
 ## OUPUT
- ![Screenshot 2025-03-20 141327](https://github.com/user-attachments/assets/26016ec6-7cfc-4789-8a65-839c2be0a8a8)
+
+<img width="1092" height="278" alt="Screenshot 2025-09-29 152918" src="https://github.com/user-attachments/assets/ec19a2ec-5406-47d4-9a05-e3b6f441d282" />
+
 
 ## RESULT
 Thus, python program to perform stop and wait protocol was successfully executed
